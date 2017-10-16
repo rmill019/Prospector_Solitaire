@@ -3,6 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Deck : MonoBehaviour {
+	// Suits
+	public Sprite						suitClub;
+	public Sprite 						suitDiamond;
+	public Sprite 						suitHeart;
+	public Sprite 						suitSpade;
+
+	public Sprite[] 					faceSprites;
+	public Sprite[] 					rankSprites;
+
+	public Sprite 						cardBack;
+	public Sprite 						cardBackGold;
+	public Sprite 						cardFront;
+	public Sprite 						cardFrontGold;
+
+	//Prefabs
+	public GameObject 					prefrabSprite;
+	public GameObject 					prefabCard;
 
 	public bool _______________________________;
 
@@ -72,6 +89,36 @@ public class Deck : MonoBehaviour {
 			cDef.rank = int.Parse (xCardDefs[i].att ("rank"));
 			// Grab a PT_XMLHashList of all the <pip>s on this <card>
 			PT_XMLHashList xPips = xCardDefs[i] ["pips"];
+			if (xPips != null) 
+			{
+				for (int j = 0; j < xPips.Count; j++) 
+				{
+					// Iterate through al the <pip>s
+					deco = new Decorator();
+					// <pip>s on the <card> are handled via the Decorator Class
+					deco.type = "pip";
+					deco.flip = (xPips [j].att ("flip") == "1");	// Relational statement that sets the boolean value for flip)
+					deco.loc.x = float.Parse (xPips[j].att ("x"));
+					deco.loc.y = float.Parse (xPips [j].att ("y"));
+					deco.loc.z = float.Parse (xPips [j].att ("z"));
+					if (xPips [j].HasAtt ("scale")) 
+					{
+						deco.scale = float.Parse (xPips [j].att ("scale"));
+					}
+					cDef.pips.Add (deco);
+				}
+			}
+
+			// Face cards (Jack, Queen, & King) have a face attribute
+			// cDef.face is the base name of the face card Sprite
+			// e.g., FaceCard_11 is the base name for the Jack face Sprites
+			// the Jack of Clubs is FaceCard_11C, hearts is FaceCard_11H, etc.
+			if (xCardDefs [i].HasAtt ("face"))
+			{
+				cDef.face = xCardDefs [i].att ("face");
+			}
+
+			cardDefs.Add (cDef);
 		}
 	}
 }
