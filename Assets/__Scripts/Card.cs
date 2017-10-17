@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Card : MonoBehaviour {
 
-	// This will be defined later
+	public string		suit;
+	public int			rank;
+	public Color 		color = Color.black;
+	public string		cols = "Black";  // Or "Red". name of the color of the suit
 }
 
 [System.Serializable]
