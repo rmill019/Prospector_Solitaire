@@ -7,7 +7,22 @@ public class Card : MonoBehaviour {
 	public string		suit;
 	public int			rank;
 	public Color 		color = Color.black;
-	public string		cols = "Black";  // Or "Red". name of the color of the suit
+	public string		colS = "Black";  // Or "Red". name of the color of the suit
+
+	// This List holds all of the Decorator GameObjects
+	public List<GameObject> decoGOs = new List<GameObject>();
+	// This List holds all of the Pip GameObjects
+	public List<GameObject> pipGOs = new List<GameObject>();
+
+	public GameObject		back;		// The GameObject of the back of the card
+	public CardDefinition	def;		// Parsed from DeckXML.xml
+
+	public bool faceUp
+	{
+		get { return (!back.activeSelf); }
+
+		set { back.SetActive (!value); }
+	}
 }
 
 [System.Serializable]

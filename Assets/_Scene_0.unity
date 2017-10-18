@@ -313,7 +313,7 @@ MonoBehaviour:
   cardBackGold: {fileID: 21300000, guid: 8ecf4828943064b3a96f6258b54c0f11, type: 3}
   cardFront: {fileID: 21300000, guid: 873a7658b7ec742228520c7b15510f4d, type: 3}
   cardFrontGold: {fileID: 21300000, guid: 944dc539459fe4109b973bd4c97f68ee, type: 3}
-  prefrabSprite: {fileID: 1000014090761352, guid: 30a6ba41f0d264815a76b64a60ee0b62,
+  prefabSprite: {fileID: 1000014090761352, guid: 30a6ba41f0d264815a76b64a60ee0b62,
     type: 2}
   prefabCard: {fileID: 1746605861166596, guid: a06e19d0644a6864187b71287678e06b, type: 2}
   _______________________________: 0
